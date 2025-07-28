@@ -10,7 +10,7 @@ function dd($data)
 
 function render_view($view, $layoutPath, $data = [])
 {
-    extract($data);
+    extract($data, EXTR_SKIP);
     $viewFile = ROOT_PATH . "/views/{$view}.html.php";
 
     if (!file_exists($viewFile)) {

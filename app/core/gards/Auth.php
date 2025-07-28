@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Core;
+namespace App\Core\Gard;
 
 use App\Core\Abstract\Singleton;
+use App\Core\Session;
 
 class Auth extends Singleton{
     private Session $session;

@@ -1,7 +1,6 @@
 <?php
 
-use App\Core\Auth;
-
+use App\Core\Gard\Auth;
 
 $gards=[
         "auth"=>Auth::class,

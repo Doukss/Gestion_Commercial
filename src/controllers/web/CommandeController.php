@@ -13,6 +13,7 @@ class CommandeController extends AbstractController
     private $personneService;
     public function __construct()
     {
+        parent::__construct();
         $this->commandeService = CommandeService::getInstance();
         $this->personneService = PersonneService::getInstance();
     }
@@ -24,6 +25,21 @@ class CommandeController extends AbstractController
         'client_nom' => $_GET['client_search'] ?? null
     ];
   
+
+    // Exemple d'utilisation du validator
+    $rules = [
+        'numero' => ['required' => "Le numéro est requis"],
+        // Ajoutez d'autres règles si besoin
+    ];
+    $isValid = $this->validator->validate($filters, $rules);
+    if (!$isValid) {
+        // On stocke les erreurs en session
+        $this->session->set('errors', $this->validator->getErrors());
+    } else {
+        // On stocke les filtres valides en session
+        $this->session->set('last_filters', $filters);
+    }
+
     // Appel unique du service
     $commandes = $this->commandeService->getAllCommandes($filters);
     $client = null;
@@ -33,9 +49,12 @@ class CommandeController extends AbstractController
         // dd($client);
     }
 
-    render_view('commande/listeCommande', 'baseLayout', [
-        'commandes' => $commandes,'client' => $client,'openModal' => $openModal ?? false,
+    $this->render_view('commande/listeCommande', [
+    'commandes' => $commandes,
+    'client' => $client,
+    'openModal' => $openModal ?? false,
     ]);
+
 }
 
     public function store(): void {}
