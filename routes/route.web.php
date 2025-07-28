@@ -2,27 +2,43 @@
 
 use App\Controller\Web\CommandeController;
 use App\Controller\Web\SecurityController;
+use App\Core\Router;
 
-$routes = [
-    "accueil" => [
-        'controller' => CommandeController::class,
-        'action' => "index",
-        'gards' => ["auth"]
-    ],
-    "form" => [
-        'controller' => SecurityController::class,
-        'action' => "form"
-    ],
-    "" => [
-        'controller' => SecurityController::class,
-        'action' => "form"
-    ],
-    "login" => [
-        'controller' => SecurityController::class,
-        'action' => "login"
-    ],
-    "logout" => [
-        'controller' => SecurityController::class,
-        'action' => "logout"
-    ],
-];
+Router::addRoute(
+    "accueil", 
+    CommandeController::class, 
+    "index", 
+    ["auth"]
+);
+
+Router::addRoute(
+    "form", 
+    SecurityController::class, 
+    "form"
+);
+
+Router::addRoute(
+    "", 
+    SecurityController::class, 
+    "form"
+);
+
+Router::addRoute(
+    "login", 
+    SecurityController::class, 
+    "login"
+);
+
+Router::addRoute(
+    "logout", 
+    SecurityController::class, 
+    "logout", 
+    ["auth"] 
+);
+
+Router::addRoute(
+    "nouvelle",
+    CommandeController::class,
+    "nouvelleCommande",
+    ["auth"],
+);

@@ -25,7 +25,6 @@
       "App\\Core\\Middleware\\": "app/core/middlewares/",
       "App\\Api\\": "src/api/",
       "App\\Core\\Gard\\": "app/core/gards/"
-
     }
   }
 }

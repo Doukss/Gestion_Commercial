@@ -33,10 +33,10 @@
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen flex items-center justify-center ">
     <div class=" w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row ">
-            <?php require_once ROOT_PATH . "/views/components/sidebar.html.php"; ?>
+            <?php require_once ROOT_PATH . "/views/components/sidebar/sidebar.html.php"; ?>
         <!-- Contenu principal -->
         <div class="flex-1 flex flex-col overflow-hidden ml-64">
-            <?php require_once ROOT_PATH . "/views/components/header.html.php"; ?>
+            <?php require_once ROOT_PATH . "/views/components/header/header.html.php"; ?>
                 <?= $content; ?>
         </div>
     </div>

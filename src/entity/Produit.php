@@ -76,4 +76,17 @@ use App\Enum\StatutProduit;
     {
         $this->statutProduit = $statutProduit;
     }
+
+    public static function toObject(array $data): self
+{
+    $produit = new self(
+        $data['id'] ?? null,
+        $data['libelle'] ?? null,
+        $data['qtstk'] ?? 0,
+        $data['prix'] ?? 0.0,
+        StatutProduit::from($data['statut'] ?? StatutProduit::DISPONIBLE->value)
+    );
+
+    return $produit;
+}
 }
